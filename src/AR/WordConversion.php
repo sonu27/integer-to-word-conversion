@@ -3,6 +3,28 @@ namespace AR;
 
 class WordConversion
 {
+    private static $oneToNineteen = [
+        1 => 'one',
+        2 => 'two',
+        3 => 'three',
+        4 => 'four',
+        5 => 'five',
+        6 => 'six',
+        7 => 'seven',
+        8 => 'eight',
+        9 => 'nine',
+        10 => 'ten',
+        11 => 'eleven',
+        12 => 'twelve',
+        13 => 'thirteen',
+        14 => 'fourteen',
+        15 => 'fifteen',
+        16 => 'sixteen',
+        17 => 'seventeen',
+        18 => 'eighteen',
+        19 => 'nineteen',
+    ];
+    
     private static $tens = [
         1 => 'ten',
         2 => 'twenty',
@@ -54,12 +76,12 @@ class WordConversion
     {
         $output = '';
         if ($number < 20) {
-            $output = $this->convert0To19($number);
+            $output = self::$oneToNineteen[$number];
         } else {
             $numberString = str_pad(strval($number), 3, '0', STR_PAD_LEFT);
 
             if ($numberString[0] !== '0') {
-                $output = $this->convert0To19(intval($numberString[0])).' hundred';
+                $output = self::$oneToNineteen[intval($numberString[0])].' hundred';
             }
 
             if ($numberString[0] !== '0' && ($numberString[1] !== '0' || $numberString[2] !== '0')) {
@@ -75,74 +97,8 @@ class WordConversion
                     $output .= ' ';
                 }
 
-                $output .= $this->convert0To19(intval($numberString[2]));
+                $output .= self::$oneToNineteen[intval($numberString[2])];
             }
-        }
-
-        return $output;
-    }
-
-    private function convert0To19($number)
-    {
-        $output = '';
-        switch ($number) {
-            case 1:
-                $output = 'one';
-                break;
-            case 2:
-                $output = 'two';
-                break;
-            case 3:
-                $output = 'three';
-                break;
-            case 4:
-                $output = 'four';
-                break;
-            case 5:
-                $output = 'five';
-                break;
-            case 6:
-                $output = 'six';
-                break;
-            case 7:
-                $output = 'seven';
-                break;
-            case 8:
-                $output = 'eight';
-                break;
-            case 9:
-                $output = 'nine';
-                break;
-            case 10:
-                $output = 'ten';
-                break;
-            case 11:
-                $output = 'eleven';
-                break;
-            case 12:
-                $output = 'twelve';
-                break;
-            case 13:
-                $output = 'thirteen';
-                break;
-            case 14:
-                $output = 'fourteen';
-                break;
-            case 15:
-                $output = 'fifteen';
-                break;
-            case 16:
-                $output = 'sixteen';
-                break;
-            case 17:
-                $output = 'seventeen';
-                break;
-            case 18:
-                $output = 'eighteen';
-                break;
-            case 19:
-                $output = 'nineteen';
-                break;
         }
 
         return $output;
