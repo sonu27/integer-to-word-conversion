@@ -148,4 +148,19 @@ class WordConversionTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals('ninety', $this->obj->convert(90));
     }
+
+    public function test27Conversion()
+    {
+        $this->assertEquals('twenty seven', $this->obj->convert(27));
+    }
+
+    public function test44Conversion()
+    {
+        $this->assertEquals('forty four', $this->obj->convert(44));
+    }
+
+    public function test999Conversion()
+    {
+        $this->assertEquals('nine hundred and ninety nine', $this->obj->convert(999));
+    }
 }

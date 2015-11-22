@@ -52,6 +52,10 @@ class WordConversion
             }
 
             if ($numberString[2] !== '0') {
+                if ($numberString[1] !== '0') {
+                    $output .= ' ';
+                }
+
                 $output .= $this->convert0To19(intval($numberString[2]));
             }
         }
