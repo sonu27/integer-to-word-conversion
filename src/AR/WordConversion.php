@@ -4,15 +4,15 @@ namespace AR;
 class WordConversion
 {
     private static $oneToNineteen = [
-        1 => 'one',
-        2 => 'two',
-        3 => 'three',
-        4 => 'four',
-        5 => 'five',
-        6 => 'six',
-        7 => 'seven',
-        8 => 'eight',
-        9 => 'nine',
+        1  => 'one',
+        2  => 'two',
+        3  => 'three',
+        4  => 'four',
+        5  => 'five',
+        6  => 'six',
+        7  => 'seven',
+        8  => 'eight',
+        9  => 'nine',
         10 => 'ten',
         11 => 'eleven',
         12 => 'twelve',
@@ -24,7 +24,7 @@ class WordConversion
         18 => 'eighteen',
         19 => 'nineteen',
     ];
-    
+
     private static $tens = [
         1 => 'ten',
         2 => 'twenty',
@@ -48,7 +48,7 @@ class WordConversion
         $numberString = str_pad(strval($number), 9, '0', STR_PAD_LEFT);
 
         $subString = substr($numberString, -9, 3);
-        $millions = $this->convertLessThan1000(intval($subString));
+        $millions  = $this->convertLessThan1000(intval($subString));
         if (!empty($millions)) {
             $output .= $millions.' million';
         }
@@ -62,7 +62,7 @@ class WordConversion
             $output .= $thousands.' thousand';
         }
 
-        $subString = substr($numberString, -3);
+        $subString = substr($numberString, -3, 3);
         $hundreds  = $this->convertLessThan1000(intval($subString));
         if (!empty($thousands) && !empty($hundreds)) {
             $output .= ' ';
