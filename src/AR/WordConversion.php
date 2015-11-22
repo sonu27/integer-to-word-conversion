@@ -25,9 +25,18 @@ class WordConversion
 
         $numberString = str_pad(strval($number), 9, '0', STR_PAD_LEFT);
 
+        $subString = substr($numberString, -9, 3);
+        $millions = $this->convertLessThan1000(intval($subString));
+        if (!empty($millions)) {
+            $output .= $millions.' million';
+        }
+
         $subString = substr($numberString, -6, 3);
         $thousands = $this->convertLessThan1000(intval($subString));
         if (!empty($thousands)) {
+            if (!empty($millions) && !empty($thousands)) {
+                $output .= ' ';
+            }
             $output .= $thousands.' thousand';
         }
 

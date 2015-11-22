@@ -186,4 +186,24 @@ class WordConversionTest extends PHPUnit_Framework_TestCase
             $this->obj->convert(999999)
         );
     }
+
+    public function test1000000Conversion()
+    {
+        $this->assertEquals('one million', $this->obj->convert(1000000));
+    }
+
+    public function test999999999Conversion()
+    {
+        $this->assertEquals(
+            'nine hundred and ninety nine million nine hundred and ninety nine thousand nine hundred and ninety nine',
+            $this->obj->convert(999999999)
+        );
+    }
+    public function test56945781Conversion()
+    {
+        $this->assertEquals(
+            'fifty six million nine hundred and forty five thousand seven hundred and eighty one',
+            $this->obj->convert(56945781)
+        );
+    }
 }
