@@ -24,9 +24,19 @@ class WordConversion
         }
 
         $numberString = str_pad(strval($number), 9, '0', STR_PAD_LEFT);
-        $subString = substr($numberString, -3);
 
-        $output = $this->convertLessThan1000($number);
+        $subString = substr($numberString, -6, 3);
+        $thousands = $this->convertLessThan1000(intval($subString));
+        if (!empty($thousands)) {
+            $output .= $thousands.' thousand';
+        }
+
+        $subString = substr($numberString, -3);
+        $hundreds  = $this->convertLessThan1000(intval($subString));
+        if (!empty($thousands) && !empty($hundreds)) {
+            $output .= ' ';
+        }
+        $output .= $hundreds;
 
         return $output;
     }

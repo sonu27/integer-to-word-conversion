@@ -163,4 +163,27 @@ class WordConversionTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals('nine hundred and ninety nine', $this->obj->convert(999));
     }
+
+    public function test1000Conversion()
+    {
+        $this->assertEquals('one thousand', $this->obj->convert(1000));
+    }
+
+    public function test9999Conversion()
+    {
+        $this->assertEquals('nine thousand nine hundred and ninety nine', $this->obj->convert(9999));
+    }
+
+    public function test100000Conversion()
+    {
+        $this->assertEquals('one hundred thousand', $this->obj->convert(100000));
+    }
+
+    public function test999999Conversion()
+    {
+        $this->assertEquals(
+            'nine hundred and ninety nine thousand nine hundred and ninety nine',
+            $this->obj->convert(999999)
+        );
+    }
 }
