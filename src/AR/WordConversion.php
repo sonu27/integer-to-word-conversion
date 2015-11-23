@@ -1,7 +1,7 @@
 <?php
 namespace AR;
 
-class WordConversion
+class WordConversion implements WordConversionInterface
 {
     private static $oneToNineteen = [
         1  => 'one',
