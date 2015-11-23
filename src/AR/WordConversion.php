@@ -39,11 +39,15 @@ class WordConversion implements WordConversionInterface
 
     public function convert($number)
     {
-        $output = '';
+        if ($number < 0 || $number > 999999999) {
+            throw new \OutOfRangeException('Integer value is out of the supported range');
+        }
 
         if ($number === 0) {
             return 'zero';
         }
+
+        $output = '';
 
         $numberString = str_pad(strval($number), 9, '0', STR_PAD_LEFT);
 
